@@ -34,50 +34,61 @@ body {
 /* Smoke Effect Styles */
 .smoke-emitter {
   position: absolute;
-  inset: -20px;
-  z-index: -1;
+  inset: -50px;
+  z-index: 1;
+  /* Above background */
   pointer-events: none;
-  overflow: visible;
+  overflow: visible !important;
 }
 
 .smoke-particle {
   position: absolute;
-  top: 50%;
+  top: 70%;
   left: 50%;
-  width: 150%;
-  height: 150%;
-  background: radial-gradient(circle, rgba(200, 200, 200, 0.15) 0%, transparent 70%);
+  width: 140%;
+  height: 140%;
+  /* Bright, mist-like gradient */
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.4) 0%, transparent 60%);
   border-radius: 50%;
   transform: translate(-50%, -50%) scale(0.5);
-  filter: blur(40px);
-  animation: smoke-drift 8s infinite ease-out;
+  filter: blur(50px);
+  animation: smoke-drift 7s infinite ease-out;
   opacity: 0;
 }
 
 .smoke-particle:nth-child(2) {
-  animation-delay: 2s;
+  animation-delay: 1.5s;
+  animation-duration: 8s;
 }
 
 .smoke-particle:nth-child(3) {
-  animation-delay: 4s;
+  animation-delay: 3.5s;
+  animation-duration: 9s;
 }
 
 .smoke-particle:nth-child(4) {
-  animation-delay: 6s;
+  animation-delay: 5.5s;
+  animation-duration: 10s;
 }
 
 @keyframes smoke-drift {
   0% {
-    transform: translate(-50%, -50%) scale(0.5) rotate(0deg);
+    transform: translate(-50%, -10%) scale(0.4) rotate(0deg);
     opacity: 0;
   }
 
-  20% {
-    opacity: 0.8;
+  30% {
+    opacity: 0.7;
   }
 
   100% {
-    transform: translate(-50%, -80%) scale(1.5) rotate(45deg);
+    transform: translate(-30%, -110%) scale(2) rotate(45deg);
     opacity: 0;
   }
+}
+
+/* Ensure the image container sits on top of the smoke */
+.smoke-layer-top {
+  position: relative;
+  z-index: 2;
 }
