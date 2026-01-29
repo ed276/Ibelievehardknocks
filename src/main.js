@@ -22,7 +22,7 @@ const initAnimations = () => {
             duration: 1,
             ease: 'power3.out'
         }, '-=0.8')
-        .to('.hero-brands', {
+        .to('.hero-silhouette', {
             opacity: 1,
             y: 0,
             duration: 1,
