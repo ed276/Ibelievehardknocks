@@ -22,6 +22,12 @@ const initAnimations = () => {
             duration: 1,
             ease: 'power3.out'
         }, '-=0.8')
+        .to('.hero-brands', {
+            opacity: 1,
+            y: 0,
+            duration: 1,
+            ease: 'power3.out'
+        }, '-=0.7')
         .to('.hero-cta', {
             opacity: 1,
             y: 0,
