@@ -9,7 +9,7 @@
   --font-impact: "Bebas Neue", sans-serif;
   --font-body: "Inter", sans-serif;
 
-  --background-image-cinder-block: url("https://imagedelivery.net/m5BQ9NwISdGmaMKgfNT6sA/f294fb90-806d-4dca-e8a5-1b685d01a100/public");
+  --background-image-cinder-block: url("/cinder-block.jpg");
 }
 
 :root {
