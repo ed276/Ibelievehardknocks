@@ -16,6 +16,9 @@
 /* Explicit fallback to ensure Vite processes the asset regardless of Tailwind logic */
 .bg-cinder {
   background-image: url("./assets/bg-cinder.jpg") !important;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 :root {
