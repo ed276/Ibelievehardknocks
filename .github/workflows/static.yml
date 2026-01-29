@@ -1,4 +1,4 @@
-# Ultra-clean deployment workflow for Tailwind v4
+# Robust deployment workflow for Tailwind v4 (Linux-Native Sync)
 name: Deploy static content to Pages
 
 on:
@@ -29,29 +29,20 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          # Cache disabled to force a fresh, clean start
-          # cache: 'npm' 
 
-      - name: Install dependencies
+      - name: Install dependencies (Linux Native)
         run: |
+          # Delete the Windows-generated lockfile to prevent platform collisions
+          rm -f package-lock.json
           npm install
-          echo "Installation complete."
+          echo "Fresh Linux lockfile generated and dependencies installed."
 
       - name: Build
         run: |
-          echo "Starting Build Step..."
-          # Running with verbose logging to catch the EXACT error
-          npm run build -- --debug || { echo "BUILD FAILED. Printing debug info..."; exit 1; }
-
-      - name: Verify dist
-        run: |
-          if [ -d "dist" ]; then
-            echo "Build successful. Contents of dist:"
-            ls -R dist
-          else
-            echo "CRITICAL ERROR: dist directory was not created!"
-            exit 1
-          fi
+          echo "Starting Vite Build..."
+          npm run build
+          echo "Verification: Checking dist directory..."
+          ls -R dist
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
