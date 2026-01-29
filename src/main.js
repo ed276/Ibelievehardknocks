@@ -62,13 +62,22 @@ const initAnimations = () => {
     ScrollTrigger.create({
         start: 'top top',
         onUpdate: (self) => {
-            const nav = document.querySelector('#main-nav')
+            const navContainer = document.querySelector('.nav-container')
+            const logos = document.querySelectorAll('.logo-img')
             if (self.scroll() > 50) {
-                nav.classList.add('py-2', 'bg-hardknocks-black/95')
-                nav.classList.remove('py-4', 'bg-hardknocks-black/80')
+                navContainer.classList.add('py-4')
+                navContainer.classList.remove('py-8')
+                logos.forEach(img => {
+                    img.classList.add('h-20', 'md:h-24')
+                    img.classList.remove('h-32', 'md:h-40')
+                })
             } else {
-                nav.classList.add('py-4', 'bg-hardknocks-black/80')
-                nav.classList.remove('py-2', 'bg-hardknocks-black/95')
+                navContainer.classList.add('py-8')
+                navContainer.classList.remove('py-4')
+                logos.forEach(img => {
+                    img.classList.add('h-32', 'md:h-40')
+                    img.classList.remove('h-20', 'md:h-24')
+                })
             }
         }
     })
