@@ -1,5 +1,15 @@
 @import "tailwindcss";
 
+@theme {
+  --color-hardknocks-black: #0a0a0a;
+  --color-hardknocks-red: #cc0000;
+  --color-hardknocks-gold: #ffb700;
+  --color-ibelieve-blue: #0055ff;
+
+  --font-impact: "Bebas Neue", sans-serif;
+  --font-body: "Inter", sans-serif;
+}
+
 :root {
   background-color: #0a0a0a;
   color: #ffffff;
@@ -7,5 +17,5 @@
 
 body {
   margin: 0;
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-body);
 }

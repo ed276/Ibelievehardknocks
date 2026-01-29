@@ -1,4 +1,4 @@
-# Simple workflow for deploying static content to GitHub Pages
+# Robust deployment workflow with detailed logging
 name: Deploy static content to Pages
 
 on:
@@ -31,11 +31,15 @@ jobs:
           node-version: 20
 
       - name: Install dependencies
-        run: npm install
+        run: |
+          npm install
+          npm list --depth=0
 
       - name: Build
         run: |
-          npm run build
+          echo "Starting Vite Build..."
+          npm run build -- --logLevel info
+          echo "Checking output directory..."
           ls -R dist
 
       - name: Setup Pages
