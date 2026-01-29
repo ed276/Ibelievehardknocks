@@ -8,10 +8,14 @@
 
   --font-impact: "Bebas Neue", sans-serif;
   --font-body: "Inter", sans-serif;
+
+  /* This tells Tailwind v4 to create the 'bg-cinder' class */
+  --background-image-cinder: url("./assets/bg-cinder.jpg");
 }
 
-@utility bg-cinder-block {
-  background-image: url("./assets/cinder-block.jpg");
+/* Explicit fallback to ensure Vite processes the asset regardless of Tailwind logic */
+.bg-cinder {
+  background-image: url("./assets/bg-cinder.jpg") !important;
 }
 
 :root {
