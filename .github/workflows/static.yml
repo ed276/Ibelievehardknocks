@@ -1,4 +1,4 @@
-# Strict deployment workflow with error trapping
+# Ultra-clean deployment workflow for Tailwind v4
 name: Deploy static content to Pages
 
 on:
@@ -29,21 +29,27 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
+          # Cache disabled to force a fresh, clean start
+          # cache: 'npm' 
 
-      - name: Install
+      - name: Install dependencies
         run: |
-          npm install || (echo "NPM Install Failed" && exit 1)
+          npm install
+          echo "Installation complete."
 
       - name: Build
         run: |
-          npm run build || (echo "Build Failed" && exit 1)
+          echo "Starting Build Step..."
+          # Running with verbose logging to catch the EXACT error
+          npm run build -- --debug || { echo "BUILD FAILED. Printing debug info..."; exit 1; }
 
-      - name: Verify
+      - name: Verify dist
         run: |
           if [ -d "dist" ]; then
+            echo "Build successful. Contents of dist:"
             ls -R dist
           else
-            echo "Error: dist directory not found"
+            echo "CRITICAL ERROR: dist directory was not created!"
             exit 1
           fi
 
